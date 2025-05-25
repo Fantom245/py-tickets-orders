@@ -137,7 +137,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 
         if title:
             title_names = [name.strip() for name in title.split(",")]
-            queryset = queryset.filter(tickets__movie_session__movie__title__in=title_names).distinct()
+            queryset = queryset.filter(tickets__movie_session__movie__title__icontains=title_names).distinct()
         if genres:
             genres_name = [genre.strip() for genre in genres.split(",")]
             queryset = queryset.filter(
